@@ -6,10 +6,25 @@ Config files for zsh.
 * symlink `.zshenv` to `$HOME/.zshenv`
 
 ## Additional requirements
+### `.zshrc`
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     * [arch comunity repo](https://archlinux.org/packages/community/any/zsh-syntax-highlighting/)
+    * fish style syntax highlighting
 * [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
     * [arch comunity repo](https://archlinux.org/packages/community/any/zsh-history-substring-search/)
     * apply [this](https://github.com/zsh-users/zsh-history-substring-search/commit/220e3a03e04055d683b242054fa195d146f10d84.diff) patch to only match beginning of the line
+    * fish (and vim) style history search. type the start of a command, press up to only match commands that start the same.
 * [spaceshipt-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
     * [AUR](https://aur.archlinux.org/packages/spaceship-prompt/)
+    * a nice looking minimal prompt
+
+### `.zprofile`
+Nothing that `.zprofile` contains is essential for zsh, it just sets up a few things
+* [mlocate](https://pagure.io/mlocate)
+    * [arch core repo](https://archlinux.org/packages/core/x86_64/mlocate/)
+    * mlocate database is updated
+* [amixer (alsa-utils)](https://github.com/alsa-project/alsa-utils)
+    * [arch extra repo](https://archlinux.org/packages/extra/x86_64/alsa-utils/)
+    * sets master volume to 30% and turns speakers off
+* [update-variables (dwm-scripts)](https://github.com/dk949/dwm-scripts)
+    * updates variables required for slstatus
