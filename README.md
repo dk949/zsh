@@ -2,8 +2,15 @@
 Config files for zsh.
 
 ## How to use
+* create regular file `$XDG_CACHE_HOME/zsh/history` if id doesn't already exist
+    * this will store all zsh history
+    * this file will never reset and will grow indefinitely, if this is an issue, change the values of `HISTSIZE` and `SAVEHIST` in `.zshrc`
+* create directory `$XDG_CONFIG_HOME/aliases/`
+    * all files in this directory will be sourced
+    * put aliases in the files for them to be used
 * place this repo in `$XDG_CONFIG_HOME`
 * symlink `.zshenv` to `$HOME/.zshenv`
+
 
 ## Additional requirements
 ### `.zshrc`
@@ -13,7 +20,8 @@ Config files for zsh.
 * [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
     * [arch comunity repo](https://archlinux.org/packages/community/any/zsh-history-substring-search/)
     * apply [this](https://github.com/zsh-users/zsh-history-substring-search/commit/220e3a03e04055d683b242054fa195d146f10d84.diff) patch to only match beginning of the line
-    * fish (and vim) style history search. type the start of a command, press up to only match commands that start the same.
+    * fish (and vim) style history search
+        * type the start of a command, press up to only match commands that start the same
 * [spaceshipt-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
     * [AUR](https://aur.archlinux.org/packages/spaceship-prompt/)
     * a nice looking minimal prompt
