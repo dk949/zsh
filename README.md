@@ -1,4 +1,4 @@
-# README
+# Zsh
 Config files for zsh.
 
 ## How to use
