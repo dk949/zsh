@@ -138,7 +138,7 @@ load-nvmrc
 
 
 # Source aliases
-for f in ~/.config/aliases/*; do
+for f in $XDG_CONFIG_HOME/aliases/*; do
     source "$f"
 done
 
