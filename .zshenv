@@ -85,6 +85,13 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export CONAN_USER_HOME="$XDG_CACHE_HOME/"
 export CONAN_USER_HOME_SHORT="$XDG_CACHE_HOME/conan-short"
 
+# xmllint
+export XMLLINT_INDENT="    "
+
+
+# java
+export JDK_HOME="$HOME/.jdks/corretto-11.0.10/"
+
 
 ######################################################################################
 

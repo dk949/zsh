@@ -107,9 +107,37 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey -a "ZZ" exit_zsh
 
+lazy_load() {
+    echo "Init $1 ..."
+
+    local -a names
+    if [[ -n "$ZSH_VERSION" ]]; then
+        names=("${(@s: :)${1}}")
+    else
+        names=($1)
+    fi
+    unalias "${names[@]}"
+    . $2
+    shift 2
+    $*
+}
+
+group_lazy_load() {
+    local script
+    script=$1
+    shift 1
+    for cmd in "$@"; do
+        alias $cmd="lazy_load \"$*\" $script $cmd"
+    done
+}
+
 # nvm stuff
 export NVM_DIR="$XDG_CONFIG_HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && group_lazy_load $NVM_DIR/nvm.sh nvm node npm yarn ts-node # This lazy-loads nvm
+
+
+
+
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
