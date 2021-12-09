@@ -131,9 +131,10 @@ group_lazy_load() {
     done
 }
 
+alias load_nvm='group_lazy_load $NVM_DIR/nvm.sh nvm node npm yarn ts-node' # This lazy-loads nvm
 # nvm stuff
 export NVM_DIR="$XDG_CONFIG_HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && group_lazy_load $NVM_DIR/nvm.sh nvm node npm yarn ts-node # This lazy-loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && load_nvm # This lazy-loads nvm
 
 
 
@@ -142,7 +143,6 @@ export NVM_DIR="$XDG_CONFIG_HOME/.nvm"
 # place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
-
   [ -f ./.nvmrc ] || return
 
   local node_version="$(nvm version)"
@@ -212,7 +212,7 @@ SPACESHIP_XCODE_SHOW_LOCAL=false
 SPACESHIP_SWIFT_SHOW_LOCAL=false
 SPACESHIP_GOLANG_SHOW=false
 SPACESHIP_PHP_SHOW=false
-SPACESHIP_RUST_SHOW=true
+SPACESHIP_RUST_SHOW=false
 SPACESHIP_JULIA_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
 SPACESHIP_DOCKER_CONTEXT_SHOW=false

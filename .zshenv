@@ -3,6 +3,9 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/share/npm/bin
 export PATH=$PATH:~/.cabal/bin/
+___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort | tac | head -n 1)"
+test -d "$___TMP" && export PATH=$PATH:$___TMP/bin
+___TMP=
 
 # Adding default applications
 export EDITOR='nvim'
