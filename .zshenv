@@ -3,8 +3,8 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/share/npm/bin
 export PATH=$PATH:~/.cabal/bin/
-___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort | tac | head -n 1)"
-test -d "$___TMP" && export PATH=$PATH:$___TMP/bin
+test -d "~/.stack/programs/x86_64-linux" && ___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort | tac | head -n 1)"
+test -n "$___TMP" && test -d "$___TMP" && export PATH=$PATH:$___TMP/bin
 ___TMP=
 
 # Adding default applications
@@ -45,6 +45,9 @@ export AWT_TOOLKIT=MToolkit
 
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
+
+# xmllint
+export XMLLINT_INDENT="    "
 
 
 # Moving some directories
@@ -88,12 +91,13 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export CONAN_USER_HOME="$XDG_CACHE_HOME/"
 export CONAN_USER_HOME_SHORT="$XDG_CACHE_HOME/conan-short"
 
-# xmllint
-export XMLLINT_INDENT="    "
 
 
 # java
 export JDK_HOME="$HOME/.jdks/corretto-11.0.10/"
+
+# Xauthority
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
 
 ######################################################################################
