@@ -3,9 +3,9 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/share/npm/bin
 export PATH=$PATH:~/.cabal/bin/
-test -d "~/.stack/programs/x86_64-linux" && ___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort | tac | head -n 1)"
-test -n "$___TMP" && test -d "$___TMP" && export PATH=$PATH:$___TMP/bin
-___TMP=
+[ -d ~/.stack/programs/x86_64-linux/ ] && ___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort -r | head -n 1)"
+[ -n "$___TMP" ] && [ -d "$___TMP" ] && export PATH=$PATH:$___TMP/bin
+unset ___TMP
 
 # Adding default applications
 export EDITOR='nvim'
@@ -86,6 +86,8 @@ export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 
+# python
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 
 #conan
 export CONAN_USER_HOME="$XDG_CACHE_HOME/"
