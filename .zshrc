@@ -100,41 +100,14 @@ precmd() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # Control bindings for programs
 bindkey -s "^h" "history 1\n"
 bindkey -s "^l" "clear\n"
-bindkey -s "^d" "dlfile\n"
+bindkey -s "^z" "fg\n"
 
 # exiting the terminal
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey -a "ZZ" exit_zsh
 
-lazy_load() {
-    echo "Init $1 ..."
-
-    local -a names
-    if [[ -n "$ZSH_VERSION" ]]; then
-        names=("${(@s: :)${1}}")
-    else
-        names=($1)
-    fi
-    unalias "${names[@]}"
-    . $2
-    shift 2
-    $*
-}
-
-group_lazy_load() {
-    local script
-    script=$1
-    shift 1
-    for cmd in "$@"; do
-        alias $cmd="lazy_load \"$*\" $script $cmd"
-    done
-}
-
-alias load_nvm='group_lazy_load $NVM_DIR/nvm.sh nvm node npm yarn ts-node' # This lazy-loads nvm
-# nvm stuff
-export NVM_DIR="$XDG_CONFIG_HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && load_nvm # This lazy-loads nvm
+alias source_nvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
 
 
@@ -142,8 +115,13 @@ export NVM_DIR="$XDG_CONFIG_HOME/.nvm"
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
+nvm_prev_dir=
 load-nvmrc() {
   [ -f ./.nvmrc ] || return
+  [ "$nvm_prev_dir" = "$PWD" ] && return
+  nvm_prev_dir="$PWD"
+
+  command -v nvm > /dev/null || source_nvm
 
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
@@ -174,7 +152,7 @@ done
 # Load zsh-syntax-highlighting. Important to load this before the reverse hist search
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 # Search repos for programs that can't be found
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# source /usr/share/doc/pkgfile/command-not-found.zsh
 # Reverse history search like in Vim (also apparently like in fish)
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
