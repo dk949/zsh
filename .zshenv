@@ -1,5 +1,4 @@
 
-export PATH=$PATH:~/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/share/npm/bin
 export PATH=$PATH:~/.cabal/bin/
@@ -11,7 +10,6 @@ unset ___TMP
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='alacritty'
-export TERM='alacritty'
 export BROWSER='firefox'
 
 # Configuring XDG default directories
@@ -50,10 +48,12 @@ export GDK_DPI_SCALE=0.5
 export XMLLINT_INDENT="    "
 
 
+
 # Moving some directories
 ######################################################################################
 # rust
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+. "$CARGO_HOME/env"
 
 #gtk2
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
