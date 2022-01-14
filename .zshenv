@@ -53,7 +53,8 @@ export XMLLINT_INDENT="    "
 ######################################################################################
 # rust
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
-. "$CARGO_HOME/env"
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+[ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
 
 #gtk2
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
