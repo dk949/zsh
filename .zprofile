@@ -9,8 +9,11 @@ sudo pkgfile -u &
 # Initial volume
 amixer -q sset 'Master' 30% off
 
-update-variables 18000
+update-variables 3600
 
 
+[ -f $HOME/.yarnrc ] && rm $HOME/.yarnrc &
+[ -d $HOME/.yarn ] && rm -rf $HOME/.yarn &
+[ -d $HOME/.npm ] && rm -rf $HOME/.npm &
 
 [ "$(tty | sed -E 's|/dev/tty([0-9]*)|\1|')" = "1" ] && startx "$XDG_CONFIG_HOME/X11/xinitrc"
