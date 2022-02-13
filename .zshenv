@@ -102,8 +102,10 @@ export JDK_HOME="$HOME/.jdks/corretto-11.0.10/"
 # Xauthority
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
+# spaceship prompt
+. "$XDG_CONFIG_HOME/zsh/prompt.zsh"
 
 ######################################################################################
 
-# have zsch find it's file
-export ZDOTDIR=$HOME/.config/zsh
+# have zsh find it's file
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

@@ -144,25 +144,25 @@ load-nvmrc
 
 # tty theme
 if [ "$TERM" = "linux" ]; then
-	printf %b '\e[40m' '\e[8]' # set default background to color 0 'dracula-bg'
-	printf %b '\e[37m' '\e[8]' # set default foreground to color 7 'dracula-fg'
-	printf %b '\e]P0282a36'    # redefine 'black'          as 'dracula-bg'
-	printf %b '\e]P86272a4'    # redefine 'bright-black'   as 'dracula-comment'
-	printf %b '\e]P1ff5555'    # redefine 'red'            as 'dracula-red'
-	printf %b '\e]P9ff7777'    # redefine 'bright-red'     as '#ff7777'
-	printf %b '\e]P250fa7b'    # redefine 'green'          as 'dracula-green'
-	printf %b '\e]PA70fa9b'    # redefine 'bright-green'   as '#70fa9b'
-	printf %b '\e]P3f1fa8c'    # redefine 'brown'          as 'dracula-yellow'
-	printf %b '\e]PBffb86c'    # redefine 'bright-brown'   as 'dracula-orange'
-	printf %b '\e]P4bd93f9'    # redefine 'blue'           as 'dracula-purple'
-	printf %b '\e]PCcfa9ff'    # redefine 'bright-blue'    as '#cfa9ff'
-	printf %b '\e]P5ff79c6'    # redefine 'magenta'        as 'dracula-pink'
-	printf %b '\e]PDff88e8'    # redefine 'bright-magenta' as '#ff88e8'
-	printf %b '\e]P68be9fd'    # redefine 'cyan'           as 'dracula-cyan'
-	printf %b '\e]PE97e2ff'    # redefine 'bright-cyan'    as '#97e2ff'
-	printf %b '\e]P7f8f8f2'    # redefine 'white'          as 'dracula-fg'
-	printf %b '\e]PFffffff'    # redefine 'bright-white'   as '#ffffff'
-	clear
+    printf %b '\e[40m' '\e[8]' # set default background to color 0 'dracula-bg'
+    printf %b '\e[37m' '\e[8]' # set default foreground to color 7 'dracula-fg'
+    printf %b '\e]P0282a36'    # redefine 'black'          as 'dracula-bg'
+    printf %b '\e]P86272a4'    # redefine 'bright-black'   as 'dracula-comment'
+    printf %b '\e]P1ff5555'    # redefine 'red'            as 'dracula-red'
+    printf %b '\e]P9ff7777'    # redefine 'bright-red'     as '#ff7777'
+    printf %b '\e]P250fa7b'    # redefine 'green'          as 'dracula-green'
+    printf %b '\e]PA70fa9b'    # redefine 'bright-green'   as '#70fa9b'
+    printf %b '\e]P3f1fa8c'    # redefine 'brown'          as 'dracula-yellow'
+    printf %b '\e]PBffb86c'    # redefine 'bright-brown'   as 'dracula-orange'
+    printf %b '\e]P4bd93f9'    # redefine 'blue'           as 'dracula-purple'
+    printf %b '\e]PCcfa9ff'    # redefine 'bright-blue'    as '#cfa9ff'
+    printf %b '\e]P5ff79c6'    # redefine 'magenta'        as 'dracula-pink'
+    printf %b '\e]PDff88e8'    # redefine 'bright-magenta' as '#ff88e8'
+    printf %b '\e]P68be9fd'    # redefine 'cyan'           as 'dracula-cyan'
+    printf %b '\e]PE97e2ff'    # redefine 'bright-cyan'    as '#97e2ff'
+    printf %b '\e]P7f8f8f2'    # redefine 'white'          as 'dracula-fg'
+    printf %b '\e]PFffffff'    # redefine 'bright-white'   as '#ffffff'
+    clear
 fi
 
 # Source aliases
@@ -195,39 +195,7 @@ export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 # Unless it got merged into main
 export HISTORY_SUBSTRING_SEARCH_PREFIX=1
 
-SPACESHIP_DIR_TRUNC=0
-SPACESHIP_DIR_PREFIX=
-SPACESHIP_USER_SHOW=always
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_HG_SHOW=true
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_NODE_SHOW=true
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_ELM_SHOW=false
-SPACESHIP_ELIXIR_SHOW=false
-SPACESHIP_XCODE_SHOW_LOCAL=false
-SPACESHIP_SWIFT_SHOW_LOCAL=false
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_PHP_SHOW=false
-SPACESHIP_RUST_SHOW=false
-SPACESHIP_JULIA_SHOW=false
-SPACESHIP_DOCKER_SHOW=false
-SPACESHIP_DOCKER_CONTEXT_SHOW=false
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_CONDA_SHOW=false
-SPACESHIP_VENV_SHOW=true
-SPACESHIP_PYENV_SHOW=true
-SPACESHIP_DOTNET_SHOW=true
-SPACESHIP_EMBER_SHOW=false
-SPACESHIP_KUBECONTEXT_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_JOBS_SHOW=true
-
-# Spaceship Prompt
+# Run prompt
 autoload -U promptinit; promptinit
 prompt spaceship
 
