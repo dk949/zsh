@@ -1,10 +1,9 @@
+# Configuring XDG default directories
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
 
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.local/share/npm/bin
-export PATH=$PATH:~/.cabal/bin/
-[ -d ~/.stack/programs/x86_64-linux/ ] && ___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort -r | head -n 1)"
-[ -n "$___TMP" ] && [ -d "$___TMP" ] && export PATH=$PATH:$___TMP/bin
-unset ___TMP
+. "$XDG_CONFIG_HOME/zsh/path.zsh"
 
 # Adding default applications
 export EDITOR='nvim'
@@ -12,10 +11,6 @@ export VISUAL='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
 
-# Configuring XDG default directories
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
 
 
 # Colored man pages
@@ -94,7 +89,8 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 export CONAN_USER_HOME="$XDG_CACHE_HOME/"
 export CONAN_USER_HOME_SHORT="$XDG_CACHE_HOME/conan-short"
 
-
+#gdirve
+export GDRIVE_CONFIG_DIR="$XDG_CONFIG_HOME/gdrive/"
 
 # java
 export JDK_HOME="$HOME/.jdks/corretto-11.0.10/"
