@@ -7,4 +7,6 @@ unset ___TMP
 
 
 export PATH="$PATH:/opt/biber-2.16"
+export PATH="$PATH:/opt/visit/bin"
+
 
