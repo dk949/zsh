@@ -10,7 +10,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
-
+export RESOLUTION=$(awk '/RESOLUTION/ {print $3}' $XDG_CONFIG_HOME/X11/Xrandr)
 
 
 # Colored man pages
@@ -36,8 +36,8 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
+export GDK_SCALE=$(dc -e "$RESOLUTION 1080 / p")
+export GDK_DPI_SCALE=$(dc -e "2 k 1080 $RESOLUTION / p")
 
 # xmllint
 export XMLLINT_INDENT="    "
@@ -52,10 +52,10 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 [ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
 
 #gtk2
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 # java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 
 # Android sdk
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android/sdk/
@@ -92,11 +92,9 @@ export CONAN_USER_HOME_SHORT="$XDG_CACHE_HOME/conan-short"
 #gdirve
 export GDRIVE_CONFIG_DIR="$XDG_CONFIG_HOME/gdrive/"
 
-# java
-export JDK_HOME="$HOME/.jdks/corretto-11.0.10/"
 
 # Xauthority
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # spaceship prompt
 . "$XDG_CONFIG_HOME/zsh/prompt.zsh"
