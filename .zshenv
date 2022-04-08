@@ -10,7 +10,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
-export RESOLUTION=$(awk '/RESOLUTION/ {print $3}' $XDG_CONFIG_HOME/X11/Xrandr)
+export RESOLUTION=1080
 
 
 # Colored man pages
