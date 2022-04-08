@@ -1,3 +1,10 @@
+# Configuring XDG default directories
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+. "$XDG_CONFIG_HOME/zsh/path.zsh"
+
 # Adding default applications
 export EDITOR='nvim'
 export VISUAL='nvim'
@@ -5,24 +12,6 @@ export TERMINAL='alacritty'
 export BROWSER='firefox'
 export RESOLUTION=$(awk '/RESOLUTION/ {print $3}' $XDG_CONFIG_HOME/X11/Xrandr)
 
-# Configuring XDG default directories
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-
-# java
-export JDK_HOME="/opt/corretto-11.0.14.10.1/"
-
-# path
-export PATH="$HOME/.local/bin:$PATH:"
-export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
-export PATH="$PATH:$HOME/.cabal/bin/"
-export PATH="$PATH:$JDK_HOME/bin"
-export PATH="$PATH:/opt/clion-2021.3.3/bin/"
-#export PATH="$PATH:/opt/elm-0.19.1/"
-[ -d ~/.stack/programs/x86_64-linux/ ] && ___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort -r | head -n 1)"
-[ -n "$___TMP" ] && [ -d "$___TMP" ] && export PATH=$PATH:$___TMP/bin
-unset ___TMP
 
 # Colored man pages
 export LESS_TERMCAP_mb=$'\e[1;32m' # green
@@ -66,7 +55,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 # java
-#export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 
 # Android sdk
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android/sdk/
@@ -100,6 +89,8 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 export CONAN_USER_HOME="$XDG_CACHE_HOME/"
 export CONAN_USER_HOME_SHORT="$XDG_CACHE_HOME/conan-short"
 
+#gdirve
+export GDRIVE_CONFIG_DIR="$XDG_CONFIG_HOME/gdrive/"
 
 
 
