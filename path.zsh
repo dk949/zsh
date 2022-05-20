@@ -29,3 +29,6 @@ export PATH="$PATH:/opt/elm-0.19.1/"
 
 # visit
 export PATH="$PATH:/opt/visit/bin"
+
+# cuda
+export PATH="$PATH:/opt/cuda/bin"
