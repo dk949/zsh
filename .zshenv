@@ -10,7 +10,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
-export RESOLUTION=1080
+export RESOLUTION=2160
 
 
 # Colored man pages
