@@ -13,7 +13,7 @@ export PATH="$PATH:$HOME/.cabal/bin/"
 unset ___TMP
 
 
-export JDK_HOME="/opt/corretto-11.0.14.10.1/"
+export JDK_HOME="/opt/jdk/"
 
 # Java
 export PATH="$PATH:$JDK_HOME/bin"
