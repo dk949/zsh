@@ -8,7 +8,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 # Adding default applications
 export EDITOR='nvim'
 export VISUAL='nvim'
-export TERMINAL='alacritty'
+export TERMINAL='st'
 export BROWSER='firefox'
 export RESOLUTION=2160
 
