@@ -22,9 +22,8 @@ Config files for zsh.
     * apply [this](https://github.com/zsh-users/zsh-history-substring-search/commit/220e3a03e04055d683b242054fa195d146f10d84.diff) patch to only match beginning of the line
     * fish (and vim) style history search
         * type the start of a command, press up to only match commands that start the same
-* [spaceshipt-prompt](https://github.com/spaceship-prompt/spaceship-prompt)
-    * [AUR](https://aur.archlinux.org/packages/spaceship-prompt/)
-    * a nice looking minimal prompt
+* [searocket prompt](https://github.com/dk949/searocket)
+    * needs to be built from source, requires dlang toolchain
 
 ### `.zprofile`
 Nothing that `.zprofile` contains is essential for zsh, it just sets up a few things

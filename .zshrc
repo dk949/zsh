@@ -107,6 +107,9 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey -a "ZZ" exit_zsh
 
+# Load RVM (can't be lazy loaded like NVM)
+#[ -s "$rvm_path/scripts/rvm" ] && . "$rvm_path/scripts/rvm"
+
 alias source_nvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
 
@@ -196,7 +199,7 @@ export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_PREFIX=1
 
 # Run prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+. /usr/share/searocket/searocket.zsh
+
 
 #zprof
