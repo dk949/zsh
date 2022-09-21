@@ -92,12 +92,15 @@ export CONAN_USER_HOME_SHORT="$XDG_CACHE_HOME/conan-short"
 #gdirve
 export GDRIVE_CONFIG_DIR="$XDG_CONFIG_HOME/gdrive/"
 
+# ruby
+export rvm_path="$XDG_CONFIG_HOME/rvm/"
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
+
 
 # Xauthority
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-
-# spaceship prompt
-. "$XDG_CONFIG_HOME/zsh/prompt.zsh"
 
 ######################################################################################
 
