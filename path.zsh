@@ -32,3 +32,6 @@ export PATH="$PATH:/opt/visit/bin"
 
 # cuda
 export PATH="$PATH:/opt/cuda/bin"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$rvm_path/bin"
