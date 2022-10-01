@@ -25,7 +25,10 @@ export PATH="$PATH:/opt/biber-2.16"
 export PATH="$PATH:/opt/clion-2021.3.3/bin/"
 
 # elm
-export PATH="$PATH:/opt/elm-0.19.1/"
+export PATH="$PATH:/opt/elm/"
+
+# bun
+export PATH="$PATH:/opt/bun/bin"
 
 # visit
 export PATH="$PATH:/opt/visit/bin"
