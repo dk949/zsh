@@ -112,8 +112,8 @@ bindkey -a "ZZ" exit_zsh
 
 alias source_nvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
-
-
+# bun completions
+[ -s "/opt/bun/_bun" ] && source "/opt/bun/_bun"
 
 
 # place this after nvm initialization!
