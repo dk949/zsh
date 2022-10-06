@@ -179,7 +179,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Search repos for programs that can't be found (requires pkgfile)
 source /usr/share/doc/pkgfile/command-not-found.zsh
 # Reverse history search like in Vim (also apparently like in fish)
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source "$HOME/src/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
 # Key bindings for the history search thing
 # Insert mode

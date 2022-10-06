@@ -10,7 +10,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export TERMINAL='st'
 export BROWSER='firefox'
-export RESOLUTION=2160
+export RESOLUTION=1800
 
 
 # Colored man pages
@@ -36,7 +36,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
-export GDK_SCALE=$(dc -e "$RESOLUTION 1080 / p")
+export GDK_SCALE=$(dc -e "2 k $RESOLUTION 1080 / p")
 export GDK_DPI_SCALE=$(dc -e "2 k 1080 $RESOLUTION / p")
 
 # xmllint
@@ -101,6 +101,10 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 
 # Xauthority
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
+# zsh history substring search
+
+export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 
 ######################################################################################
 
