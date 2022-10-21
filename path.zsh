@@ -30,11 +30,20 @@ export PATH="$PATH:/opt/elm/"
 # bun
 export PATH="$PATH:/opt/bun/bin"
 
+# shellcheck
+export PATH="$PATH:/opt/shellcheck"
+
 # visit
 export PATH="$PATH:/opt/visit/bin"
 
 # cuda
 export PATH="$PATH:/opt/cuda/bin"
+
+# formark
+export PATH="$PATH:/opt/formark"
+
+# pandoc
+export PATH="$PATH:/opt/pandoc/bin/"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$rvm_path/bin"
