@@ -36,8 +36,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
-export GDK_SCALE=$(dc -e "2 k $RESOLUTION 1080 / p")
-export GDK_DPI_SCALE=$(dc -e "2 k 1080 $RESOLUTION / p")
+autoload -U zcalc
+export GDK_SCALE=export GDK_SCALE=$(zcalc -f -e "$RESOLUTION / 1080  + 0.23")
+export GDK_DPI_SCALE=$(zcalc -f -e "1080 / $RESOLUTION")
 
 # xmllint
 export XMLLINT_INDENT="    "
