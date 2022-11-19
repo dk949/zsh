@@ -103,6 +103,12 @@ export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 # Xauthority
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
+# dub
+export DUB_HOME="$XDG_DATA_HOME/dub"
+
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
 # zsh history substring search
 
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
