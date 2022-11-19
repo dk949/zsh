@@ -4,13 +4,6 @@
 # shellcheck source=/dev/null
 # Updatingthe mlocate database
 sudo updatedb &
-sudo pkgfile -u &
-
-# Initial volume
-amixer -q sset 'Master' 30% off
-
-update-variables 3600
-
 
 [ -f $HOME/.yarnrc ] && rm $HOME/.yarnrc &
 [ -d $HOME/.yarn ] && rm -rf $HOME/.yarn &
