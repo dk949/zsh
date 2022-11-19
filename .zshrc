@@ -26,7 +26,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)		# Include hidden files.
+setopt globdots
 
 # vi mode
 bindkey -v
