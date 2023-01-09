@@ -1,3 +1,6 @@
+autoload -U zcalc
+
+
 # Configuring XDG default directories
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -31,12 +34,13 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 20%"
 
 # Stuff for the qt theme
 export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCALE_FACTOR=2
 
 # Settings to make java UI toolkit happy
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
-autoload -U zcalc
 export GDK_SCALE=export GDK_SCALE=$(zcalc -f -e "$RESOLUTION / 1080  + 0.23")
 export GDK_DPI_SCALE=$(zcalc -f -e "1080 / $RESOLUTION")
 
