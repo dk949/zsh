@@ -12,38 +12,29 @@ export PATH="$PATH:$HOME/.cabal/bin/"
 [ -n "$___TMP" ] && [ -d "$___TMP" ] && export PATH=$PATH:$___TMP/bin
 unset ___TMP
 
-
 export JDK_HOME="/opt/jdk/"
 
-# Java
-export PATH="$PATH:$JDK_HOME/bin"
+opt_path=(
+    "$JDK_HOME/bin"            # Java
+    "/opt/biber"               # Biber
+    "/opt/bun/bin"             # bun
+    "/opt/clion-2021.3.3/bin/" # clion
+    "/opt/cuda/bin"            # cuda
+    "/opt/elm/"                # elm
+    "/opt/formark"             # formark
+    "/opt/hlint/"              # hlint
+    "/opt/inkscape"            # inkscape
+    "/opt/krita/"              # krita
+    "/opt/pandoc/bin/"         # pandoc
+    "/opt/scala3"              # scala
+    "/opt/serve-d/"            # serve-d
+    "/opt/shellcheck"          # shellcheck
+    "/opt/visit/bin"           # visit
+)
 
-# biber
-export PATH="$PATH:/opt/biber-2.16"
-
-# clion
-export PATH="$PATH:/opt/clion-2021.3.3/bin/"
-
-# elm
-export PATH="$PATH:/opt/elm/"
-
-# bun
-export PATH="$PATH:/opt/bun/bin"
-
-# shellcheck
-export PATH="$PATH:/opt/shellcheck"
-
-# visit
-export PATH="$PATH:/opt/visit/bin"
-
-# cuda
-export PATH="$PATH:/opt/cuda/bin"
-
-# formark
-export PATH="$PATH:/opt/formark"
-
-# pandoc
-export PATH="$PATH:/opt/pandoc/bin/"
+export OPT_PATH=$(IFS=:; echo "${opt_path[*]}")
+export PATH="$PATH:$OPT_PATH"
+unset opt_path
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$rvm_path/bin"
