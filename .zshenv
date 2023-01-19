@@ -42,7 +42,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
 export GDK_SCALE=export GDK_SCALE=$(zcalc -f -e "$RESOLUTION / 1080  + 0.23")
-export GDK_DPI_SCALE=$(zcalc -f -e "1080 / $RESOLUTION")
+export GDK_DPI_SCALE=1
 
 # xmllint
 export XMLLINT_INDENT="    "
