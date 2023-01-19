@@ -7,8 +7,7 @@ export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
 #cabal
 export PATH="$PATH:$HOME/.cabal/bin/"
 
-# stack
-[ -d ~/.stack/programs/x86_64-linux/ ] && ___TMP="$(find ~/.stack/programs/x86_64-linux -maxdepth 1 -type d | sort -r | head -n 1)"
+[ -d ~/.stack/programs/x86_64-linux/ ] && ___TMP="$(find $XDG_DATA_HOME/stack/programs/x86_64-linux -maxdepth 1 -type d | sort -r | head -n 1)"
 [ -n "$___TMP" ] && [ -d "$___TMP" ] && export PATH=$PATH:$___TMP/bin
 unset ___TMP
 

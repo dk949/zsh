@@ -56,6 +56,10 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 [ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
 
+# haskell
+export GHCUP_USE_XDG_DIRS=true
+export STACK_ROOT="$XDG_DATA_HOME"/stack
+
 #gtk2
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
