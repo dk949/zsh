@@ -56,6 +56,10 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 [ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
 
+# go
+export GOPATH="$XDG_DATA_HOME"/go
+export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
+
 # haskell
 export GHCUP_USE_XDG_DIRS=true
 export STACK_ROOT="$XDG_DATA_HOME"/stack
