@@ -98,8 +98,6 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 precmd() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Control bindings for programs
-bindkey -s "^h" "history 1\n"
-bindkey -s "^l" "clear\n"
 bindkey -s "^z" "fg\n"
 
 # exiting the terminal
