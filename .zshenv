@@ -62,7 +62,7 @@ export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 
 # haskell
 export GHCUP_USE_XDG_DIRS=true
-export STACK_ROOT="$XDG_DATA_HOME"/stack
+export STACK_XDG=1
 
 #gtk2
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
@@ -120,6 +120,18 @@ export DUB_HOME="$XDG_DATA_HOME/dub"
 
 # Docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
+# ncurses
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+
+# texlive
+export TEXMFHOME=$XDG_DATA_HOME/texmf
+export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
+export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
+
+# elm
+export ELM_HOME="$XDG_CONFIG_HOME"/elm
 
 # zsh history substring search
 
