@@ -17,6 +17,7 @@ HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
 HISTFILE=~/.cache/zsh/history
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 
 # Basic auto/tab complete:
 autoload -U compinit
