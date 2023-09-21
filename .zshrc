@@ -2,12 +2,16 @@
 # ~/.config/zsh/.zshrc
 #
 # uncomment this and the last line of the file to run the profiler
-#zmodload zsh/zprof
+# zmodload zsh/zprof
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 # Enable colors and change prompt:
 autoload -U colors && colors
+
+___DIRNAME="$ZDOTDIR"
+
+. "$___DIRNAME/util.sh"
 
 # Enable changing directory automatically
 setopt auto_cd
@@ -24,6 +28,10 @@ autoload -U compinit
 zstyle ':completion:*' menu select
 # Auto complete with case insensitivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+file=$(ensurefile "https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza" comp/_eza)
+export FPATH="$(dirname $file):$FPATH"
+unset file
 
 zmodload zsh/complist
 compinit
@@ -178,7 +186,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Search repos for programs that can't be found (requires pkgfile)
 source /usr/share/doc/pkgfile/command-not-found.zsh
 # Reverse history search like in Vim (also apparently like in fish)
-source "$HOME/src/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source $(ensurefile "https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh")
 
 # Key bindings for the history search thing
 # Insert mode
@@ -193,12 +201,12 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=bg=1,fg=15,bold
 export HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS=I
 export HISTORY_SUBSTRING_SEARCH_FUZZY=
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-#Note this does nothing without this patch https://github.com/zsh-users/zsh-history-substring-search/commit/220e3a03e04055d683b242054fa195d146f10d84.diff
-# Unless it got merged into main
 export HISTORY_SUBSTRING_SEARCH_PREFIX=1
+
+unset ___DIRNAME
 
 # Run prompt
 . /usr/share/searocket/searocket.zsh
 
 
-#zprof
+# zprof
