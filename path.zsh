@@ -29,6 +29,7 @@ opt_path=(
     "/opt/serve-d/"            # serve-d
     "/opt/shellcheck"          # shellcheck
     "/opt/visit/bin"           # visit
+    "/opt/j9.4/bin"            # jconsole
 )
 
 export OPT_PATH=$(IFS=:; echo "${opt_path[*]}")
