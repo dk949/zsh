@@ -133,6 +133,8 @@ export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 # elm
 export ELM_HOME="$XDG_CONFIG_HOME"/elm
 
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+
 # zsh history substring search
 
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
