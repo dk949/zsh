@@ -135,6 +135,9 @@ export ELM_HOME="$XDG_CONFIG_HOME"/elm
 
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
+# julia
+export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
+
 # zsh history substring search
 
 export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
