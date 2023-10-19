@@ -29,12 +29,14 @@ opt_path=(
     "/opt/serve-d/"            # serve-d
     "/opt/shellcheck"          # shellcheck
     "/opt/visit/bin"           # visit
-    "/opt/j9.4/bin"            # jconsole
 )
 
 export OPT_PATH=$(IFS=:; echo "${opt_path[*]}")
 export PATH="$PATH:$OPT_PATH"
 unset opt_path
+
+# use this jconsole instead of the java one
+export PATH="/opt/j9.4/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$rvm_path/bin"
