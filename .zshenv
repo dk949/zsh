@@ -9,8 +9,9 @@ export XDG_DATA_HOME=$HOME/.local/share
 . "$XDG_CONFIG_HOME/zsh/path.zsh"
 
 # Adding default applications
-export EDITOR='nvim'
-export VISUAL='nvim'
+# inherit EDITOR and VISUAL from calling process
+[ -z "$EDITOR" ] && export EDITOR='nvim'
+[ -z "$VISUAL" ] && export VISUAL='nvim'
 export TERMINAL='st'
 export BROWSER='firefox'
 export RESOLUTION=1800
