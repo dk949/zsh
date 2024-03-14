@@ -36,7 +36,7 @@ export FZF_DEFAULT_OPTS="--layout=reverse --height 20%"
 # Stuff for the qt theme
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export QT_SCALE_FACTOR=2
+export QT_SCALE_FACTOR=1
 
 # Settings to make java UI toolkit happy
 export _JAVA_AWT_WM_NONREPARENTING=1
