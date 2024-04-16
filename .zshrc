@@ -187,6 +187,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/doc/pkgfile/command-not-found.zsh
 # Reverse history search like in Vim (also apparently like in fish)
 source $(ensurefile "https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh")
+# fzf history search
+source $(ensurefile "https://raw.githubusercontent.com/joshskidmore/zsh-fzf-history-search/master/zsh-fzf-history-search.zsh")
 
 # Key bindings for the history search thing
 # Insert mode
@@ -202,6 +204,13 @@ export HISTORY_SUBSTRING_SEARCH_GLOBBING_FLAGS=I
 export HISTORY_SUBSTRING_SEARCH_FUZZY=
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_PREFIX=1
+
+# Settings for fzf search
+ZSH_FZF_HISTORY_SEARCH_END_OF_LINE=1
+ZSH_FZF_HISTORY_SEARCH_EVENT_NUMBERS=0
+ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
+ZSH_FZF_HISTORY_SEARCH_REMOVE_DUPLICATES=1
+ZSH_FZF_HISTORY_SEARCH_FZF_EXTRA_ARGS="--scheme=history"
 
 unset ___DIRNAME
 unset -f ensurefile
