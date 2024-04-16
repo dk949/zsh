@@ -31,7 +31,7 @@ export LESSHISTFILE=-
 
 
 # fzf default options
-export FZF_DEFAULT_OPTS="--layout=reverse --height 20%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border=rounded --prompt='❯ ' --pointer='❯ ' --color=prompt:yellow,pointer:green,hl+:bright-cyan,hl:blue,bg+:-1,gutter:-1,fg+:-1 --no-info"
 
 # Stuff for the qt theme
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -138,10 +138,6 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 # julia
 export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
-
-# zsh history substring search
-
-export HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 
 ######################################################################################
 
