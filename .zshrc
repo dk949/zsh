@@ -11,7 +11,7 @@ autoload -U colors && colors
 
 ___DIRNAME="$ZDOTDIR"
 
-. "$___DIRNAME/util.sh"
+. "$___DIRNAME/util.zsh"
 
 # Enable changing directory automatically
 setopt auto_cd
@@ -204,6 +204,7 @@ export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_PREFIX=1
 
 unset ___DIRNAME
+unset -f ensurefile
 
 # Run prompt
 . /usr/share/searocket/searocket.zsh
