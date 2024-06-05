@@ -29,10 +29,6 @@ zstyle ':completion:*' menu select
 # Auto complete with case insensitivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-file=$(ensurefile "https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza" comp/_eza)
-export FPATH="$(dirname $file):$FPATH"
-unset file
-
 zmodload zsh/complist
 compinit
 setopt globdots
