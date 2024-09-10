@@ -16,7 +16,6 @@ export JDK_HOME="/opt/jdk/"
 opt_path=(
     "$JDK_HOME/bin"            # Java
     "/opt/biber"               # Biber
-    "/opt/bun/bin"             # bun
     "/opt/clion-2021.3.3/bin/" # clion
     "/opt/cuda/bin"            # cuda
     "/opt/elm/"                # elm
@@ -40,3 +39,8 @@ export PATH="/opt/j9.4/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$rvm_path/bin"
+
+# bun
+export BUN_INSTALL="$HOME/.local/bin"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -f "$BUN_INSTALL/_bun" ] && . "$BUN_INSTALL/_bun"
