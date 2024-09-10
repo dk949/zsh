@@ -142,6 +142,10 @@ export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
 # bun
 export BUN_INSTALL="$HOME/.local/bin"
 
+# gpg
+export GPG_TTY=$(tty)
+
+
 ######################################################################################
 
 # have zsh find it's file
