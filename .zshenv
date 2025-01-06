@@ -146,6 +146,9 @@ export BUN_INSTALL="$HOME/.local/bin"
 # gpg
 export GPG_TTY=$(tty)
 
+# elixir
+export MIX_XDG="true"
+
 
 ######################################################################################
 
