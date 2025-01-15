@@ -99,6 +99,8 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 
 # python
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
+export PYTHON_HISTORY=$XDG_STATE_HOME/python/python_history
+mkdir -p "$(dirname "$PYTHON_HISTORY")"
 
 #conan
 export CONAN_USER_HOME="$XDG_CACHE_HOME/"
