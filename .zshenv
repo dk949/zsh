@@ -152,6 +152,11 @@ export GPG_TTY=$(tty)
 export MIX_XDG="true"
 
 
+# R
+R_HOME_USER="$XDG_CONFIG_HOME/R"
+R_PROFILE_USER="$XDG_CONFIG_HOME/R/profile"
+R_HISTFILE="$XDG_CONFIG_HOME/R/history"
+
 ######################################################################################
 
 # have zsh find it's file
