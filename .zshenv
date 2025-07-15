@@ -31,6 +31,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m' # red
 # No less history
 export LESSHISTFILE=-
 
+export LESS="-F -R"
 
 # fzf default options
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border=rounded --prompt='❯ ' --pointer='❯ ' --color=prompt:yellow,pointer:green,hl+:bright-cyan,hl:blue,bg+:-1,gutter:-1,fg+:-1 --no-info"
