@@ -13,7 +13,8 @@ export XDG_STATE_HOME=$HOME/.local/state
 # inherit EDITOR and VISUAL from calling process
 [ -z "$EDITOR" ] && export EDITOR='nvim'
 [ -z "$VISUAL" ] && export VISUAL='nvim'
-export TERMINAL='st'
+export TERMINAL='kitty'
+export CLI_LAUNCHER_TERMINAL='kitty'
 export BROWSER='firefox'
 export RESOLUTION=1800
 
