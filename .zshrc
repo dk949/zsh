@@ -178,6 +178,7 @@ for f in $XDG_CONFIG_HOME/aliases/*.sh; do
 done
 
 # Plugins
+fpath+=("$ZDOTDIR/files")
 # Load zsh-syntax-highlighting. Important to load this before the reverse hist search
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 # Search repos for programs that can't be found (requires pkgfile)
@@ -186,6 +187,11 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 source $(ensurefile "https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh")
 # fzf history search
 source $(ensurefile "https://raw.githubusercontent.com/joshskidmore/zsh-fzf-history-search/master/zsh-fzf-history-search.zsh")
+# manydots-magic
+ensurefile "https://raw.githubusercontent.com/knu/zsh-manydots-magic/4372de0718714046f0c7ef87b43fc0a598896af6/manydots-magic" >/dev/null
+autoload -Uz manydots-magic
+manydots-magic
+
 
 # Key bindings for the history search thing
 # Insert mode
