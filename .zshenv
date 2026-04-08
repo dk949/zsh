@@ -44,9 +44,14 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_SCALE_FACTOR=1
 
+# java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 # Settings to make java UI toolkit happy
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
+#maven
+export MAVEN_OPTS="-Dmaven.repo.local=$XDG_DATA_HOME/maven/repository"
+export MAVEN_ARGS="--settings $XDG_CONFIG_HOME/maven/settings.xml"
 
 export GDK_SCALE=export GDK_SCALE=$(zcalc -f -e "$RESOLUTION / 1080  + 0.23")
 export GDK_DPI_SCALE=1
@@ -74,8 +79,6 @@ export STACK_XDG=1
 #gtk2
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
-# java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 
 # Android sdk
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android/sdk/
