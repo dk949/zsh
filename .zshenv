@@ -20,13 +20,16 @@ export RESOLUTION=1800
 
 
 # Colored man pages
-export LESS_TERMCAP_mb=$'\e[1;32m' # green
-export LESS_TERMCAP_md=$'\e[1;32m' # blue
-export LESS_TERMCAP_me=$'\e[0m' # reset
-export LESS_TERMCAP_se=$'\e[0m' # reset
-export LESS_TERMCAP_so=$'\e[01;33m' # yellow
-export LESS_TERMCAP_ue=$'\e[0m' # reset
-export LESS_TERMCAP_us=$'\e[1;4;31m' # red
+# export LESS_TERMCAP_mb=$'\e[1;32m' # green
+# export LESS_TERMCAP_md=$'\e[1;32m' # blue
+# export LESS_TERMCAP_me=$'\e[0m' # reset
+# export LESS_TERMCAP_se=$'\e[0m' # reset
+# export LESS_TERMCAP_so=$'\e[01;33m' # yellow
+# export LESS_TERMCAP_ue=$'\e[0m' # reset
+# export LESS_TERMCAP_us=$'\e[1;4;31m' # red
+
+# neovim as manpager
+export MANPAGER='nvim +Man!'
 
 # No less history
 export LESSHISTFILE=-
