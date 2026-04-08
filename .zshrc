@@ -37,8 +37,8 @@ setopt globdots
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-
 # Enable searching through history
+
 bindkey '^R' history-incremental-pattern-search-backward
 
 # Edit line in Vim buffer ctrl-e
@@ -118,6 +118,10 @@ alias source_nvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
 
 # bun completions
 [ -s "/opt/bun/_bun" ] && source "/opt/bun/_bun"
+
+#mkssh completions
+compdef mkssh=rsync
+
 
 
 # place this after nvm initialization!
