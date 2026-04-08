@@ -14,21 +14,22 @@ unset ___TMP
 export JDK_HOME="/opt/jdk/"
 
 opt_path=(
-    "$JDK_HOME/bin"            # Java
-    "/opt/biber"               # Biber
-    "/opt/clion-2021.3.3/bin/" # clion
-    "/opt/cuda/bin"            # cuda
-    "/opt/elm/"                # elm
-    "/opt/formark"             # formark
-    "/opt/hlint/"              # hlint
-    "/opt/inkscape"            # inkscape
-    "/opt/krita/"              # krita
-    "/opt/pandoc/bin/"         # pandoc
-    "/opt/scala3"              # scala
-    "/opt/serve-d/"            # serve-d
-    "/opt/shellcheck"          # shellcheck
-    "/opt/visit/bin"           # visit
-    "/opt/blender"             # blender
+    "$JDK_HOME/bin"                    # Java
+    "/opt/biber"                       # Biber
+    "/opt/clion-2021.3.3/bin/"         # clion
+    "/opt/cuda/bin"                    # cuda
+    "/opt/elm/"                        # elm
+    "/opt/formark"                     # formark
+    "/opt/hlint/"                      # hlint
+    "/opt/inkscape"                    # inkscape
+    "/opt/krita/"                      # krita
+    "/opt/pandoc/bin/"                 # pandoc
+    "/opt/scala3"                      # scala
+    "/opt/serve-d/"                    # serve-d
+    "/opt/shellcheck"                  # shellcheck
+    "/opt/visit/bin"                   # visit
+    "/opt/blender"                     # blender
+    "/opt/goland/GoLand-2025.2.2/bin/" # goland
 )
 
 export OPT_PATH=$(IFS=:; echo "${opt_path[*]}")
