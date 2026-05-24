@@ -159,6 +159,7 @@ export GPG_TTY=$(tty)
 # elixir
 export MIX_XDG="true"
 
+export CLAUDE_CONFIG_DIR=$XDG_CONFIG_HOME/claude
 
 # R
 R_HOME_USER="$XDG_CONFIG_HOME/R"
