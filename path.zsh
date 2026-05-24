@@ -1,5 +1,5 @@
 # My executables
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin"
 
 #npm
 export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
@@ -39,10 +39,7 @@ unset opt_path
 # use this jconsole instead of the java one
 export PATH="/opt/j9.4/bin:$PATH"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$rvm_path/bin"
-
 # bun
 export BUN_INSTALL="$HOME/.local/bin"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$PATH:$BUN_INSTALL/bin"
 [ -f "$BUN_INSTALL/_bun" ] && . "$BUN_INSTALL/_bun"
