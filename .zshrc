@@ -176,6 +176,16 @@ if [ "$TERM" = "linux" ]; then
     clear
 fi
 
+if command -v direnv &>/dev/null \
+    && nix profile list --json 2>/dev/null \
+       | jq -e '.elements | has("nix-direnv")' >/dev/null; then
+    eval "$(direnv hook zsh)"
+    if [[ ! -f ~/.config/direnv/direnvrc ]]; then
+      mkdir -p ~/.config/direnv
+      echo 'source ~/.local/state/nix/profile/share/nix-direnv/direnvrc' > ~/.config/direnv/direnvrc
+    fi
+fi
+
 # Source aliases
 for f in $XDG_CONFIG_HOME/aliases/*.sh; do
     source "$f"
