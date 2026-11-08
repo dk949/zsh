@@ -1,32 +1,39 @@
 # Zsh
 Config files for zsh.
 
+Works on Linux and macOS.
+
 ## How to use
-* create regular file `$XDG_CACHE_HOME/zsh/history` if id doesn't already exist
-    * this will store all zsh history
-    * this file will never reset and will grow indefinitely, if this is an issue, change the values of `HISTSIZE` and `SAVEHIST` in `.zshrc`
-* create directory `$XDG_CONFIG_HOME/aliases/`
-    * all files in this directory will be sourced
-    * put aliases in the files for them to be used
-* place this repo in `$XDG_CONFIG_HOME`
+* place this repo in `$XDG_CONFIG_HOME` (as `$XDG_CONFIG_HOME/zsh`)
 * symlink `.zshenv` to `$HOME/.zshenv`
+* zsh history is stored in `$XDG_CACHE_HOME/zsh/history` (created automatically)
+    * this file will never reset and will grow indefinitely, if this is an issue, change the values of `HISTSIZE` and `SAVEHIST` in `.zshrc`
+* optionally create directory `$XDG_CONFIG_HOME/aliases/`
+    * all `*.sh` files in this directory will be sourced
+    * put aliases in the files for them to be used
 
 
 ## Additional requirements
+All of these are optional: anything missing is skipped.
+
 ### `.zshrc`
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-    * [arch comunity repo](https://archlinux.org/packages/community/any/zsh-syntax-highlighting/)
+    * Arch (`/usr/share/zsh/plugins`), Debian/Ubuntu (`/usr/share`) and Homebrew install locations are checked
     * fish style syntax highlighting
 * [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
-    * [arch comunity repo](https://archlinux.org/packages/community/any/zsh-history-substring-search/)
-    * apply [this](https://github.com/zsh-users/zsh-history-substring-search/commit/220e3a03e04055d683b242054fa195d146f10d84.diff) patch to only match beginning of the line
+    * downloaded automatically into `$ZDOTDIR/files` on first start
     * fish (and vim) style history search
         * type the start of a command, press up to only match commands that start the same
+* [fzf](https://github.com/junegunn/fzf)
+    * if installed, `^R` uses [zsh-fzf-history-search](https://github.com/joshskidmore/zsh-fzf-history-search) (downloaded automatically)
+* command-not-found handler, whichever is installed:
+    * [pkgfile](https://github.com/falconindy/pkgfile) on Arch, `command-not-found` on Debian/Ubuntu, or Homebrew's built-in one
 * [searocket prompt](https://github.com/dk949/searocket)
     * needs to be built from source, requires dlang toolchain
+    * `/usr/local/share/searocket/searocket.zsh` and `/usr/share/searocket/searocket.zsh` are checked
 
 ### `.zprofile`
-Nothing that `.zprofile` contains is essential for zsh, it just sets up a few things
+Nothing else in `.zprofile` is essential for zsh. On Linux, logging in on tty1 also sets up a few things and starts X
 * [mlocate](https://pagure.io/mlocate)
     * [arch core repo](https://archlinux.org/packages/core/x86_64/mlocate/)
     * mlocate database is updated

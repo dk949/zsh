@@ -16,10 +16,10 @@ ___DIRNAME="$ZDOTDIR"
 # Enable changing directory automatically
 setopt auto_cd
 
-# History in cache directory:
+mkdir -p "$XDG_CACHE_HOME/zsh"
 HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
-HISTFILE=~/.cache/zsh/history
+HISTFILE="$XDG_CACHE_HOME/zsh/history"
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
@@ -111,47 +111,11 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey -a "ZZ" exit_zsh
 
-# Load RVM (can't be lazy loaded like NVM)
-#[ -s "$rvm_path/scripts/rvm" ] && . "$rvm_path/scripts/rvm"
-
-alias source_nvm='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-
 # bun completions
-[ -s "/opt/bun/_bun" ] && source "/opt/bun/_bun"
+source_first "$BUN_INSTALL/_bun" /opt/bun/_bun
 
 #mkssh completions
 compdef mkssh=rsync
-
-
-
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-nvm_prev_dir=
-load-nvmrc() {
-  [ -f ./.nvmrc ] || return
-  [ "$nvm_prev_dir" = "$PWD" ] && return
-  nvm_prev_dir="$PWD"
-
-  command -v nvm > /dev/null || source_nvm
-
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 # tty theme
 if [ "$TERM" = "linux" ]; then
@@ -176,7 +140,7 @@ if [ "$TERM" = "linux" ]; then
     clear
 fi
 
-if command -v direnv &>/dev/null \
+if (( $+commands[direnv] && $+commands[nix] && $+commands[jq] )) \
     && nix profile list --json 2>/dev/null \
        | jq -e '.elements | has("nix-direnv")' >/dev/null; then
     eval "$(direnv hook zsh)"
@@ -186,21 +150,25 @@ if command -v direnv &>/dev/null \
     fi
 fi
 
-# Source aliases
-for f in $XDG_CONFIG_HOME/aliases/*.sh; do
+for f in $XDG_CONFIG_HOME/aliases/*.sh(N); do
     source "$f"
 done
 
 # Plugins
 fpath+=("$ZDOTDIR/files")
-# Load zsh-syntax-highlighting. Important to load this before the reverse hist search
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-# Search repos for programs that can't be found (requires pkgfile)
-source /usr/share/doc/pkgfile/command-not-found.zsh
+# Load zsh-syntax-highlighting (Arch, Debian/Ubuntu, Homebrew). Important to load this before the reverse hist search
+source_first \
+    /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    ${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh}
+# Search repos for programs that can't be found (pkgfile, command-not-found or Homebrew)
+setup_command_not_found
 # Reverse history search like in Vim (also apparently like in fish)
 source $(ensurefile "https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh")
-# fzf history search
-source $(ensurefile "https://raw.githubusercontent.com/joshskidmore/zsh-fzf-history-search/master/zsh-fzf-history-search.zsh")
+# fzf history search (rebinds ^R, so only load it when fzf is installed)
+if (( $+commands[fzf] )); then
+    source $(ensurefile "https://raw.githubusercontent.com/joshskidmore/zsh-fzf-history-search/master/zsh-fzf-history-search.zsh")
+fi
 # manydots-magic
 ensurefile "https://raw.githubusercontent.com/knu/zsh-manydots-magic/4372de0718714046f0c7ef87b43fc0a598896af6/manydots-magic" >/dev/null
 autoload -Uz manydots-magic
@@ -234,11 +202,14 @@ unsetopt extendedglob
 unset ASAN_OPTIONS
 
 
-unset ___DIRNAME
-unset -f ensurefile
-
 # Run prompt
-. /usr/share/searocket/searocket.zsh
+source_first \
+    /usr/local/share/searocket/searocket.zsh \
+    /usr/share/searocket/searocket.zsh \
+    || echo "searocket.zsh not found, using the default prompt" >&2
+
+unset ___DIRNAME
+unset -f ensurefile source_first setup_command_not_found
 
 
 # zprof

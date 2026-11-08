@@ -7,16 +7,38 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_STATE_HOME=$HOME/.local/state
 
-. "$XDG_CONFIG_HOME/zsh/path.zsh"
+# PATH, Homebrew, EDITOR and MANPAGER are set up in .zprofile
 
-# Adding default applications
-# inherit EDITOR and VISUAL from calling process
-[ -z "$EDITOR" ] && export EDITOR='nvim'
-[ -z "$VISUAL" ] && export VISUAL='nvim'
-export TERMINAL='kitty'
-export CLI_LAUNCHER_TERMINAL='kitty'
-export BROWSER='firefox'
-export RESOLUTION=1800
+# OS-specific settings
+######################################################################################
+if [[ $OSTYPE == linux* ]]; then
+    # Default applications
+    export TERMINAL='kitty'
+    export CLI_LAUNCHER_TERMINAL='kitty'
+    export BROWSER='firefox'
+
+    # Stuff for the qt theme
+    export QT_QPA_PLATFORMTHEME=qt5ct # TODO(dk949): revisit this at some point
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    export QT_SCALE_FACTOR=1
+
+    # gtk
+    export RESOLUTION=1800
+    export GDK_SCALE=$(zcalc -f -e "$RESOLUTION / 1080  + 0.23")
+    export GDK_DPI_SCALE=1
+    export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+
+    # Settings to make java UI toolkit happy
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export AWT_TOOLKIT=MToolkit
+
+    # Xauthority
+    [[ -n $XDG_RUNTIME_DIR ]] && export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+elif [[ $OSTYPE == darwin* ]]; then
+    # Stop Apple Terminal from saving per-session history into $ZDOTDIR/.zsh_sessions
+    export SHELL_SESSIONS_DISABLE=1
+fi
+######################################################################################
 
 
 # Colored man pages
@@ -28,9 +50,6 @@ export RESOLUTION=1800
 # export LESS_TERMCAP_ue=$'\e[0m' # reset
 # export LESS_TERMCAP_us=$'\e[1;4;31m' # red
 
-# neovim as manpager
-export MANPAGER='nvim +Man!'
-
 # No less history
 export LESSHISTFILE=-
 
@@ -39,22 +58,11 @@ export LESS="-F -R"
 # fzf default options
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --border=rounded --prompt='❯ ' --pointer='❯ ' --color=prompt:yellow,pointer:green,hl+:bright-cyan,hl:blue,bg+:-1,gutter:-1,fg+:-1 --no-info"
 
-# Stuff for the qt theme
-export QT_QPA_PLATFORMTHEME=qt5ct
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
-export QT_SCALE_FACTOR=1
-
 # java
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
-# Settings to make java UI toolkit happy
-export _JAVA_AWT_WM_NONREPARENTING=1
-export AWT_TOOLKIT=MToolkit
 #maven
 export MAVEN_OPTS="-Dmaven.repo.local=$XDG_DATA_HOME/maven/repository"
 export MAVEN_ARGS="--settings $XDG_CONFIG_HOME/maven/settings.xml"
-
-export GDK_SCALE=export GDK_SCALE=$(zcalc -f -e "$RESOLUTION / 1080  + 0.23")
-export GDK_DPI_SCALE=1
 
 # xmllint
 export XMLLINT_INDENT="    "
@@ -66,7 +74,6 @@ export XMLLINT_INDENT="    "
 # rust
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-[ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
 
 # go
 export GOPATH="$XDG_DATA_HOME"/go
@@ -75,9 +82,6 @@ export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 # haskell
 export GHCUP_USE_XDG_DIRS=true
 export STACK_XDG=1
-
-#gtk2
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 
 # Android sdk
@@ -124,9 +128,6 @@ export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 
 
-# Xauthority
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-
 # dub
 export DUB_HOME="$XDG_DATA_HOME/dub"
 
@@ -134,7 +135,8 @@ export DUB_HOME="$XDG_DATA_HOME/dub"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 # ncurses
-export TERMINFO="$XDG_DATA_HOME"/terminfo
+# Matters a lot for macos
+[[ -z $TERMINFO ]] && export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
 # texlive

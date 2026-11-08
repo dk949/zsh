@@ -1,45 +1,58 @@
+# Sourced from .zprofile
+
+# Drop duplicate PATH entries
+typeset -U path PATH
+
 # My executables
-export PATH="$PATH:$HOME/.local/bin"
+path+=("$HOME/.local/bin")
 
 #npm
-export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
+path+=("$XDG_DATA_HOME/npm/bin")
 
 #cabal
-export PATH="$PATH:$HOME/.cabal/bin/"
+path+=("$HOME/.cabal/bin")
 
-[ -d ~/.stack/programs/x86_64-linux/ ] && ___TMP="$(find $XDG_DATA_HOME/stack/programs/x86_64-linux -maxdepth 1 -type d | sort -r | head -n 1)"
-[ -n "$___TMP" ] && [ -d "$___TMP" ] && export PATH=$PATH:$___TMP/bin
+# rust
+[ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
+
+# stack: newest GHC for whichever platform directory exists (x86_64-linux, aarch64-osx, ...)
+___TMP=("$XDG_DATA_HOME"/stack/programs/*/*(N/nOn))
+(( $#___TMP )) && path+=("$___TMP[1]/bin")
 unset ___TMP
 
-export JDK_HOME="/opt/jdk/"
+if [[ $OSTYPE == darwin* ]]; then
+    ___TMP=$(/usr/libexec/java_home 2>/dev/null)
+    [[ -n $___TMP ]] && export JDK_HOME=$___TMP
+    unset ___TMP
+elif [[ -d /opt/jdk ]]; then
+    export JDK_HOME="/opt/jdk/"
+fi
 
+# Optional tools in /opt. (N-/) drops any directory that doesn't exist.
 opt_path=(
-    "$JDK_HOME/bin"                    # Java
-    "/opt/biber"                       # Biber
-    "/opt/clion-2021.3.3/bin/"         # clion
-    "/opt/cuda/bin"                    # cuda
-    "/opt/elm/"                        # elm
-    "/opt/formark"                     # formark
-    "/opt/hlint/"                      # hlint
-    "/opt/inkscape"                    # inkscape
-    "/opt/krita/"                      # krita
-    "/opt/pandoc/bin/"                 # pandoc
-    "/opt/scala3"                      # scala
-    "/opt/serve-d/"                    # serve-d
-    "/opt/shellcheck"                  # shellcheck
-    "/opt/visit/bin"                   # visit
-    "/opt/blender"                     # blender
-    "/opt/goland/GoLand-2025.2.2/bin/" # goland
+    ${JDK_HOME:+$JDK_HOME/bin}(N-/)          # Java
+    /opt/biber(N-/)                          # Biber
+    /opt/clion-2021.3.3/bin(N-/)             # clion
+    /opt/cuda/bin(N-/)                       # cuda
+    /opt/elm(N-/)                            # elm
+    /opt/formark(N-/)                        # formark
+    /opt/hlint(N-/)                          # hlint
+    /opt/inkscape(N-/)                       # inkscape
+    /opt/krita(N-/)                          # krita
+    /opt/pandoc/bin(N-/)                     # pandoc
+    /opt/scala3(N-/)                         # scala
+    /opt/serve-d(N-/)                        # serve-d
+    /opt/shellcheck(N-/)                     # shellcheck
+    /opt/visit/bin(N-/)                      # visit
+    /opt/blender(N-/)                        # blender
 )
 
-export OPT_PATH=$(IFS=:; echo "${opt_path[*]}")
-export PATH="$PATH:$OPT_PATH"
+export OPT_PATH=${(j.:.)opt_path}
+path+=($opt_path)
 unset opt_path
 
 # use this jconsole instead of the java one
-export PATH="/opt/j9.4/bin:$PATH"
+path=(/opt/j9.4/bin(N-/) $path)
 
 # bun
-export BUN_INSTALL="$HOME/.local/bin"
-export PATH="$PATH:$BUN_INSTALL/bin"
-[ -f "$BUN_INSTALL/_bun" ] && . "$BUN_INSTALL/_bun"
+path+=("$BUN_INSTALL/bin")
