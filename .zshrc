@@ -150,7 +150,7 @@ if (( $+commands[direnv] && $+commands[nix] && $+commands[jq] )) \
     fi
 fi
 
-for f in $XDG_CONFIG_HOME/aliases/*.sh(N); do
+for f in $XDG_CONFIG_HOME/aliases/*.zsh(N); do
     source "$f"
 done
 

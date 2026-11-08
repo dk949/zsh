@@ -9,7 +9,7 @@ Works on Linux and macOS.
 * zsh history is stored in `$XDG_CACHE_HOME/zsh/history` (created automatically)
     * this file will never reset and will grow indefinitely, if this is an issue, change the values of `HISTSIZE` and `SAVEHIST` in `.zshrc`
 * optionally create directory `$XDG_CONFIG_HOME/aliases/`
-    * all `*.sh` files in this directory will be sourced
+    * all `*.zsh` files in this directory will be sourced
     * put aliases in the files for them to be used
 
 
